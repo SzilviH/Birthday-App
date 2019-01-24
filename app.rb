@@ -1,4 +1,5 @@
 require 'sinatra/base'
+require_relative './lib/user'
 
 class BirthdayApp < Sinatra::Base
   get '/' do
@@ -6,14 +7,14 @@ class BirthdayApp < Sinatra::Base
   end
 
   post '/bday' do
-    $user = User.new(params[:name], params[:day].to_i, params[:month].to_i)
+    $user = User.new(params[:name], params[:day], params[:month])
     redirect '/message'
   end
 
   get '/message' do
     @name = $user.name
     @days = $user.days_until_bday
-    erb :message 
+    erb :message
   end
 
   # start the server if ruby file executed directly
