@@ -13,4 +13,8 @@
   }
 </style>
 
+<% if @days != 0 %>
 <h1>A very merry unbirthday to you!<br>Your birthday will be in <%= @days %> days, <%= @name %>.</h1>
+<% else %>
+<h1>HAPPY BIRTHDAY TO YOUUUU, <%= @name.upcase %>!</h1>
+<% end %>
